@@ -1,0 +1,22 @@
+Issues/Problems to solve
+
+1. Names of parties has to be consistent
+	-Recommendation: make an overall client area to be in. This way you can minimize the amount of loans that you are looking at. 
+	
+	>Enter client space
+	>Client can enter a list of parties that will be used if they know some (optional)
+	>Client has drop down list of parties he can enter, but can also enter new parties
+	>There should be an option to remove old parties but disclaimer it will mess with things. 
+
+2. Loans must be organized and separated by a script
+	-Will begin with original_agreement date
+	-If matches will then focus on parties
+	-If matches will focus on principal amounts
+	-also look into option of loan agreement 1 (titles of some sort)
+	-Year will be a factor when making these scripts as some are relevant and some are not
+
+
+	--CURRENTLY WORKING ON
+
+		trying to edit agreement table to include foreign key for clients. Everything has to be separated into a client space for simplicity and more efficient 
+		searching
