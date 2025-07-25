@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+
+<!-- This is the main login page where you can sign in-->
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Sign In - LoanLens</title>
+    <link rel="{{ url_for('static', filename = 'style.css')}}" >
+</head>
+<body>
+    <h1>Login Details</h1>
+    <form method="POST">
+        <label for="username">Username: </label>
+        <input type="text" id="username" name="username" /><br/>
+        <label for="user_pass">Key:</label>
+        <input type="password" id="password" name="password" />
+
+        <button type="submit">Submit</button>
+
+        <!-- This is a link that you will be eliminating that takes you to the main dashboard-->
+        <a href="/dashboard">GO</a>
+
+    </form>
+</body>
+</html>

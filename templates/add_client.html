@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>ADDCLIENT</title>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename ='style.css') }}" >
+</head>
+<body>
+    <h1>New Client Details</h1>
+    <button id="return-btn" onclick="history.back()">Return to Client Selection</button>
+
+    <form method="POST">
+        <label for="client_name">Client Name</label>
+        <input type="text" id="client_name" name="client_name" required /><b/>
+        <label for="has_report"> Is a report being made for this client?</label>
+        <select id="has_report" name="has_report" required>
+            <option value="">--Choose--</option>
+            <option value="YES">YES</option>
+            <option value="NO">NO</option>
+        </select>
+        
+        <button type="submit">Add New Client</button>
+
+    </form>
+
+</body>
+</html>

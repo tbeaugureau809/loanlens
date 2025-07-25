@@ -1,0 +1,11 @@
+
+Basic Premise of Loan Agreements
+
+
+Basic premise: To read loan agreements either through scanning or manual entry into a UI. Industry focus is transfer pricing specialists. 
+Will take in information such as agreement_date, original_date, maturity_date, interest rate etc and then sort the agreements into a chain. In order to have this chain
+of documents there will need to be a place you enter for each client rather than scanning all documents randomly. That way you can also add possible related parties as
+well which will make the scanning of documents easier. Any agreements without related parties wouldn't be used. 
+
+One of the key pieces of this is that the documents are generally not entered in any sort of logical order which is what gives value to this project. By having something
+that can intake information from client or people within the firm we would be able to cut down on time in a profound way so that it would mostly be review. 
