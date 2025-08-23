@@ -1,0 +1,22 @@
+# Virtual environments
+venv/
+venv*/
+.env
+.venv/
+env/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+dist/
+build/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+bin/
+obj/
