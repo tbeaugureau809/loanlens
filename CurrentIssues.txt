@@ -1,6 +1,0 @@
-Bugs to fix:
-
-1. In manual entry of adding agreeements
-	Currently able to do no principal
-	maturity date if not filled out comes out as 1900-01-01
-	There is still effective date as an option

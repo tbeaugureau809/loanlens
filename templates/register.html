@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Add User</title>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename = 'style.css')}}" />
+</head>
+<body>
+    <h1>New User Details</h1>
+
+    <form method="POST">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" required/>
+        <label for="password">Password</label>
+        <input type="text" id="password" name="password" required />
+
+        <button type="submit">Submit</button>
+
+
+        
+    </form>
+
+</body>
+</html>

@@ -1,5 +1,6 @@
 from pydoc import text
-from flask import Flask, render_template, request, redirect, url_for, session, jsonify
+from tkinter import YES
+from flask import Flask, render_template, request, redirect, url_for, session, jsonify, flash
 import pyodbc
 
 from scanner.scanner_interface import run_scanner_script
@@ -17,14 +18,54 @@ conn_str = (
     "Database=LoanOrg;"
     "Trusted_Connection=yes;"
     )
-## This is the starting page
+## Login Page of Application
 @app.route("/", methods=["GET", "POST"])
-def homepage():
+def login():
     if request.method == "POST":
         username = request.form["username"]
         password = request.form["password"]
 
+        with pyodbc.connect(conn_str) as conn:
+            cursor=conn.cursor()
+            cursor.execute("SELECT COUNT(*) FROM users WHERE username = ? AND password = ?"
+           , (username, password))
+            
+            count=cursor.fetchone()[0]
+            
+            if count > 0:
+                return redirect(url_for("dashboard"))
+            return "Invalid username or password", 401
+
+
     return render_template("home.html")
+ ## Register New User for Login Page
+@app.route("/register", methods=["GET", "POST"])
+def register():
+    if request.method=="POST":
+        username = request.form["username"]
+        password = request.form["password"]
+
+        if not username or not password:
+            return "Missing Data", 400
+        if len(username) > 20 or len(password) > 20:
+            return "Username or password is too long", 400
+
+        with pyodbc.connect(conn_str) as conn:
+            cursor = conn.cursor()
+            cursor.execute("SELECT COUNT(*) FROM users WHERE username=?", (username,))
+            count = cursor.fetchone()[0]
+
+            if count > 0:
+                return "Username already exists", 400
+            
+            cursor.execute("INSERT INTO users (username, password) VALUES (?, ?)", (username, password))
+            conn.commit()
+
+        flash("User successfully registered")
+        return redirect(url_for("login"))
+
+    return render_template("register.html")
+
 ## Dashboard is where you can select clients or add a new client. Returns you back to dashboard.html
 @app.route("/dashboard")
 def dashboard():
@@ -34,12 +75,21 @@ def dashboard():
         clients = cursor.fetchall()
 
     return render_template("dashboard.html", clients=clients)
-## Route that from Dashboard you can add a new client. Returns add_client.html
+## Page allows you to add a new client and will redirect you back to dashboard if successful
 @app.route("/add-client", methods=["GET","POST"])
 def add_client():
     if request.method=="POST":
         raw_name = request.form["client_name"]
         normal_name=normalize_name(raw_name)
+
+        has_report = request.form["has_report"]
+
+        if has_report not in ['YES', 'NO']:
+            return "Incorrect Format", 400
+
+        if not raw_name or not has_report:
+            return "missing key data", 400
+       
 
         with pyodbc.connect(conn_str) as conn:
             cursor = conn.cursor()
@@ -48,13 +98,13 @@ def add_client():
 
             if result[0]>0:
                 return "client already exists"
-            cursor.execute("INSERT INTO clients(client_name, has_report) VALUES(?,?)", raw_name, 'YES')
+            cursor.execute("INSERT INTO clients(client_name, has_report) VALUES(?,?)", raw_name, has_report)
             conn.commit()
             return redirect(url_for("dashboard"))
 
     return render_template("add_client.html")
 
-#route and html page for adding agreements. When finished it redirects you to agreement_entry.html
+## Page to add loan agreements for specific client selected. Redirects you back to client dashboard when finished
 @app.route("/add-agreement", methods=["GET", "POST"])
 def loan_form():
 
@@ -102,6 +152,7 @@ def loan_form():
 
     return render_template("agreement_entry.html", client_id=client_id)
 
+##Scanning application connection
 @app.route("/scan-agreement", methods=["GET", "POST"])
 def scan_agreement():
     client_id = session.get("client_id")
@@ -136,9 +187,7 @@ def scan_agreement():
                 data.get("lender"),
                 data.get("borrower")
                 
-                
-
-                )
+                                )
             conn.commit()
         return redirect(url_for("client_dashboard", client_id=client_id))
 
@@ -167,6 +216,7 @@ def go_to_client():
 
     return redirect(url_for("client_dashboard", client_id=client_id))
 
+#Returns all loans for client for javascript usage
 @app.route('/api/loans')
 def api_loans():
     client_id = session.get('client_id')

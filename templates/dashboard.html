@@ -10,26 +10,26 @@
           href="{{url_for('static', filename = 'style.css') }}" />
 </head>
 <body>
+    <div class="login-container">
+        <!--Must choose client and be redirected to page client_dashboard for the selected client-->
+        <h1>Choose Client</h1>
+        <button id="return-btn" onclick="history.back()">Exit to Sign-In Page</button>
 
-    <!--Must choose client and be redirected to page client_dashboard for the selected client-->
-    <h1>Choose Client</h1>
-    <button id="return-btn" onclick="history.back()">Exit to Sign-In Page</button>
-
-    <form method="POST" action="/go-to-client">
-        <label for="client">Choose a client:</label>
-        <select id="client" name="client">
-            <option value="" disabled selected> SELECT </option>
-            {% for client in clients %}
+        <form method="POST" action="/go-to-client">
+            <label for="client">Choose a client:</label>
+            <select id="client" name="client">
+                <option value="" disabled selected> SELECT </option>
+                {% for client in clients %}
                 <option value="{{ client.client_id }}">{{ client.client_name }}</option>
-            {% endfor %}
-        </select>
-        <button type="submit"> Submit </button>
-    </form>
-    <!--Form to go to add_client_html    -->
-    <form action="/add-client" method="GET">
-        <button type="submit">Add New Client</button>
-    </form>
-    
+                {% endfor %}
+            </select>
+            <button type="submit"> Submit </button><b></b>
+        </form>
+        <!--Form to go to add_client_html    -->
+        <form action="/add-client" method="GET">
+            <button type="submit">Add New Client</button>
+        </form>
+    </div>
         
 </body>
 </html>

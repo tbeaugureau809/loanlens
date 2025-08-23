@@ -13,6 +13,8 @@
     <RootNamespace>loanlens</RootNamespace>
     <LaunchProvider>Standard Python launcher</LaunchProvider>
     <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
+    <InterpreterId>
+    </InterpreterId>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -24,12 +26,30 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="loanlens.py" />
+    <Compile Include="scanner\agreement_ner_extractor_spacy.py" />
+    <Compile Include="scanner\extract_criteria.py" />
+    <Compile Include="scanner\scanner_interface.py" />
+    <Compile Include="util\normalize.py" />
+    <Compile Include="util\__init__.py" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="scanner\" />
+    <Folder Include="static\" />
+    <Folder Include="util\" />
     <Folder Include="templates\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="templates\form.html" />
+    <Content Include="ExplanationOverall.txt" />
+    <Content Include="scanner\requirements.txt" />
+    <Content Include="static\script.js" />
+    <Content Include="static\style.css" />
+    <Content Include="CurrentIssues.txt" />
+    <Content Include="templates\agreement_entry.html" />
+    <Content Include="templates\dashboard.html" />
+    <Content Include="templates\home.html" />
+    <Content Include="templates\add_client.html" />
+    <Content Include="templates\client_dashboard.html" />
+    <Content Include="templates\register.html" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

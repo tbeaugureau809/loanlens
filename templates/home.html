@@ -4,23 +4,35 @@
 <!-- This is the main login page where you can sign in-->
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
+    <!-- Bootstrap 5.3.2 via CDN -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
     <meta charset="utf-8" />
     <title>Sign In - LoanLens</title>
-    <link rel="{{ url_for('static', filename = 'style.css')}}" >
+    <link rel="stylesheet"
+          href= "{{ url_for('static', filename = 'style.css') }}" >
 </head>
 <body>
-    <h1>Login Details</h1>
-    <form method="POST">
-        <label for="username">Username: </label>
-        <input type="text" id="username" name="username" /><br/>
-        <label for="user_pass">Key:</label>
-        <input type="password" id="password" name="password" />
+    <div class="login-container">
+        <h1>Login LoanLens</h1>
+        <form method="POST">
+            <label for="username">Username: </label>
+            <input type="text" id="username" name="username" required /><br/>
 
-        <button type="submit">Submit</button>
+            <label for="password">Key:</label>
+            <input type="password" id="password" name="password" required />
 
-        <!-- This is a link that you will be eliminating that takes you to the main dashboard-->
-        <a href="/dashboard">GO</a>
+            <button type="submit">Submit</button><br />
+        </form>
+            
+        <button onclick="window.location.href='/register'">Register New User</button>
+        
+      
 
-    </form>
+          
+        
+
+        
+    </div>
 </body>
 </html>
