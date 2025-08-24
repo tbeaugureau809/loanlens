@@ -16,10 +16,10 @@ The application provides a structured workflow for capturing and organizing loan
 
 The system is designed around the four main steps analysts typically follow:  
 
-1. **Capturing data** — entering manually or extracting loan agreement details through parser.  
-2. **Reviewing data** — ensuring accuracy and completeness of captured terms.  
-3. **Performing searches** — finding comparable transactions and surfacing red flags.  
-4. **Documenting results** — generating reports, narratives, and supporting tables.  
+1. **Capturing data** â€” entering manually or extracting loan agreement details through parser.  
+2. **Reviewing data** â€” ensuring accuracy and completeness of captured terms.  
+3. **Performing searches** â€” finding comparable transactions and surfacing red flags.  
+4. **Documenting results** â€” generating reports, narratives, and supporting tables.  
 
 By automating and standardizing these steps, LoanLens reduces the **manual burden** of keeping track of dozens or hundreds of agreements, while also improving **consistency** and making results more **defensible** for tax authorities.  
 
@@ -28,7 +28,7 @@ By automating and standardizing these steps, LoanLens reduces the **manual burde
 ##  Current Features  
 
 - **User authentication**: analysts can register and log in.  
-- **Client dashboard**: view or add clients, and attach loan agreements.  
+- **Client dashboard**: view or add clients, and attach loan agreements either manually or with parser.  
 - **Agreement capture**: store essential loan terms in SQL Server for later analysis.  
 - **Data centralization**: eliminates redundancy and enables automated report generation.  
 
@@ -36,27 +36,27 @@ By automating and standardizing these steps, LoanLens reduces the **manual burde
 
 ##  Potential Enhancements  
 
-2. **Client relationship mapping**   
+1. **Client relationship mapping**   
    - Visualize connections between clients and agreements.  
    - Auto-populate dashboards when agreements are shared across related clients.  
 
-3. **Editable client dashboard tables**   
+2. **Editable client dashboard tables**   
    - Allow in-place editing of agreements, rather than re-entering data.  
 
-4. **Expanded data capture**   
+3. **Expanded data capture**   
    - Support more fields (e.g., collateral type, jurisdiction, amendments).  
 
-5. **Improved security**
+4. **Improved security**
    - Encrypt user passwords in the database.  
    - Follow best practices for authentication.  
 
-6. **Payable vs. receivable classification**  
+5. **Payable vs. receivable classification**  
    - Split dashboards into inbound vs outbound loan positions for clearer reporting.  
 
-7. **Export options**  
+6. **Export options**  
    - Output agreements into Excel tables or preformatted Word report templates.  
 
-8. **Client-side entry portal**   
+7. **Client-side entry portal**   
    - Allow clients to pre-enter agreement details or add documents before analyst review.  
 
 ---
