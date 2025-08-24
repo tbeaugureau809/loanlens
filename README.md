@@ -67,6 +67,8 @@ By automating and standardizing these steps, LoanLens reduces the **manual burde
 - **Flask** for the web application  
 - **SQL Server** (managed through SQL Server Management Studio)  
 - **pandas / openpyxl** for Excel manipulation  
+- - **spaCy** for natural language processing (used for text extraction/scanning features)
+
 
 
 ##  Database Schema (SQL Server)
